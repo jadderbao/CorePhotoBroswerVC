@@ -16,6 +16,7 @@
 #import "CoreArchive.h"
 #import "PBScrollView.h"
 #import "CALayer+Transition.h"
+#import "PBSaveBtn.h"
 
 
 
@@ -48,6 +49,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewRightMarginC;
 
 
+@property (weak, nonatomic) IBOutlet PBSaveBtn *saveButton;
 
 
 /** 相册数组 */
@@ -66,6 +68,10 @@
 
 /** 初始显示的index */
 @property (nonatomic,assign) NSUInteger index;
+
+/** 初始显示的index */
+@property (nonatomic,assign) BOOL hidenSaveButton;
+
 
 
 /** 可重用集合 */
@@ -88,7 +94,8 @@
 @implementation PhotoBroswerVC
 
 
-+(void)show:(UIViewController *)handleVC type:(PhotoBroswerVCType)type index:(NSUInteger)index photoModelBlock:(NSArray *(^)())photoModelBlock{
++(void)show:(UIViewController *)handleVC type:(PhotoBroswerVCType)type showSaveButton:(BOOL)showButton
+      index:(NSUInteger)index photoModelBlock:(NSArray *(^)())photoModelBlock{
     
     //取出相册数组
     NSArray *photoModels = photoModelBlock();
@@ -110,6 +117,9 @@
         NSLog(@"错误：index越界！");
         return;
     }
+    
+    //设置显示save button
+    pbVC.hidenSaveButton = !showButton;
     
     //记录
     pbVC.index = index;
@@ -158,6 +168,9 @@
     }
 }
 
+-(void)showSaveButton:(BOOL)show{
+    self.saveButton.hidden = show;
+}
 
 /** push */
 -(void)pushPhotoVC{
@@ -223,6 +236,9 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    //
+    self.saveButton.hidden = self.hidenSaveButton;
     
     //控制器准备
     [self vcPrepare];

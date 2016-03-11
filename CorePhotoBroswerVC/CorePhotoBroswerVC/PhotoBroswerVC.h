@@ -122,7 +122,8 @@
 @interface PhotoBroswerVC : UIViewController
 
 
-+(void)show:(UIViewController *)handleVC type:(PhotoBroswerVCType)type index:(NSUInteger)index photoModelBlock:(NSArray *(^)())photoModelBlock;
++(void)show:(UIViewController *)handleVC type:(PhotoBroswerVCType)type showSaveButton:(BOOL)showButton
+      index:(NSUInteger)index photoModelBlock:(NSArray *(^)())photoModelBlock;
 
 
 @end
