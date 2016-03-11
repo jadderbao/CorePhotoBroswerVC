@@ -67,7 +67,7 @@
     
     __weak typeof(self) weakSelf=self;
     
-    [PhotoBroswerVC show:self type:PhotoBroswerVCTypeZoom showSaveButton:FALSE index:index photoModelBlock:^NSArray *{
+    [PhotoBroswerVC show:self type:PhotoBroswerVCTypeZoom showSaveButton:NO index:index photoModelBlock:^NSArray *{
         
         NSArray *localImages = weakSelf.images;
         
@@ -100,7 +100,7 @@
     
     __weak typeof(self) weakSelf=self;
     
-    [PhotoBroswerVC show:self type:PhotoBroswerVCTypeZoom showSaveButton:FALSE index:index photoModelBlock:^NSArray *{
+    [PhotoBroswerVC show:self type:PhotoBroswerVCTypeZoom showSaveButton:NO index:index photoModelBlock:^NSArray *{
         
         
         NSArray *networkImages=@[
